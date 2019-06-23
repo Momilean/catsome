@@ -1,0 +1,154 @@
+{% extends "admin/main/base.html" %}
+{% block content %}
+    {#  获取配置  #}
+    <div class="hidden hidden_layout_wrap">
+        <input name="domain" value="{{ config.APP.domain }}">
+        <input name="prefix_url" value="{{ config.UPLOAD.prefix_url }}">
+    </div>
+ <section class="content" style="background-color: whitesmoke">
+        <div class="box-header with-border">
+            <i class="fa fa-tag"></i>
+            <h3 class="box-title">添加车辆</h3>
+        </div>
+        <div class="box-body">
+            <!-- body -->
+            <div class="row mg-t20 wrap_food_set" style="">
+                <div class="col-lg-11" style="">
+                    <div class="form-horizontal m-t" style="">
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label"><p class="text-danger">选择品牌:</p></label>
+                            <div class="col-sm-3">
+                                <select name="cat_id" class="form-control select2-hidden-accessible" tabindex="-1"
+                                        aria-hidden="true">
+                                    <option value="0">请选择车型</option>
+                                    {% for item in cat_list %}
+                                        <option value="{{ item.id }}" {% if item.id == info.cat_id %}
+                                                selected {% endif %}>{{ item.name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"><p class="text-danger">标题:</p></label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" placeholder="请输入名称" name="name"
+                                       value="{{ info.name }}">
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"><p class="text-danger">二手价:</p></label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" placeholder="请输入售价" name="price"
+                                       value="{{ info.price }}">
+                            </div>
+
+                        </div>
+                         <div class="form-group">
+                            <label class="col-sm-2 control-label"><p class="text-danger">行驶里程:</p></label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" placeholder="请输入行驶里程" name="mileage"
+                                       value="{{ info.mileage }}">
+                            </div>
+                        </div>
+                         <div class="form-group">
+                            <label class="col-sm-2 control-label">车牌属地:</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" placeholder="请输入车牌属地" name="license_plate"
+                                       value="{{ info.license_plate }}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">上牌时间:</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" placeholder="请输入上牌时间" name="license_time"
+                                       value="{{ info.license_time }}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">变速箱:</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" placeholder="请输入排量" name="transmission"
+                                       value="{{ info.transmission }}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">排量:</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" placeholder="请输入排量" name="volume"
+                                       value="{{ info.volume }}">
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label"><p class="text-danger">封面图:</p></label>
+                            <div class="col-lg-3">
+                                <form class="upload_pic_wrap" target="upload_file" enctype="multipart/form-data"
+                                      method="POST" action="{{ buildUrl('/upload/pic') }}">
+                                    <i class="fa fa-upload fa-3x"></i>
+                                    <div class="upload_wrap pull-left">
+                                        <input type="file" name="pic"
+                                               accept="image/png, image/jpeg, image/jpg,image/gif">
+                                    </div>
+                                    {% if info and info.main_image %}
+                                        <span class="pic-each">
+                            <img src="{{ buildImageUrl( info.main_image ) }}"/>
+                            <span class="fa fa-times-circle del del_image" data="{{ info.main_image }}"></span>
+                        </span>
+                                    {% endif %}
+                                </form>
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group" style="">
+                            <label class="col-lg-2 control-label"><p class="text-danger">详情描述:</p></label>
+                            <div class="col-lg-7">
+                                <textarea id="editor" name="summary"
+                                          style="height: 300px;">{{ info.summary }}</textarea>
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label"><p class="text-danger">车辆数量:</p></label>
+                            <div class="col-lg-2">
+                                <input type="text" name="stock" class="form-control" value="{{ info.stock }}">
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label"><p class="text-danger">标签:</p></label>
+                            <div class="col-lg-7">
+                                <input type="text" class="form-control" name="tags" value="{{ info.tags }}">
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <div class="col-lg-4 col-lg-offset-2">
+                                <input type="hidden" name="id" value="{{ info.id }}">
+                                <button class="btn btn-w-m btn-outline btn-primary save">保存</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.box-body -->
+    </section>
+
+    <iframe name="upload_file" class="hide"></iframe>
+
+    <script src="{{ url_for('static', filename="car/js/set.js") }}"></script>
+    <link href="{{ url_for('static', filename="plugins/select2/select2.min.css") }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename= "plugins/tagsinput/jquery.tagsinput.min.css") }}" rel="stylesheet">
+    <script src="{{ url_for('static', filename="plugins/ueditor/ueditor.config.js") }}"></script>
+    <script src="{{ url_for('static', filename="plugins/ueditor/ueditor.all.min.js") }}"></script>
+    <script src="{{ url_for('static', filename="plugins/ueditor/lang/zh-cn/zh-cn.js") }}"></script>
+    <script src="{{ url_for('static', filename="plugins/select2/select2.pinyin.js") }}"></script>
+    <script src="{{ url_for('static', filename="plugins/select2/zh-CN.js") }}"></script>
+    <script src="{{ url_for('static', filename="plugins/select2/pinyin.core.js") }}"></script>
+    <script src="{{ url_for('static', filename="plugins/tagsinput/jquery.tagsinput.min.js") }}"></script>
+
+{% endblock %}
+
+

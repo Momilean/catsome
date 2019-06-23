@@ -1,0 +1,145 @@
+{% extends "admin/main/base.html" %}
+{% block content %}
+
+ <table class="table  table-hover table-striped" style="padding-top: 5px">
+                            <thead>
+                            <tr class="info">
+                                <th>
+                                    <div>序号</div>
+                                </th>
+                                <th>
+                                    <div>分类名称</div>
+                                </th>
+                                <th>状态</th>
+                                <th>权重</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% if list %}
+                                {% for item in list %}
+                                    <tr class="active ">
+                                        <td>
+                                            <div><span class="badge label-success ">{{ item.id }}</span></div>
+                                        </td>
+                                        <td>{{ item.name }}</td>
+
+                                        <td>
+                                            {% if item.status == 1 %}
+
+                                            {% endif %}
+
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            {% else %}
+                                <tr>
+                                    <td colspan="5">暂无数据</td>
+                                </tr>
+                            {% endif %}
+                            </tbody>
+                        </table>
+
+
+{# <script src="{{ url_for('static', filename="car/js/index.js") }}"></script>#}
+{#    <section class="content" style="background-color: whitesmoke">#}
+{#            <div class="box box-primary">#}
+{#                <div class="box-header">#}
+{#                    <i class="fa  fa-tags"></i>#}
+{#                  <h3 class="box-title">车辆管理</h3>#}
+{#                </div>#}
+{#                        <div class="box-body pad table-responsive">#}
+{#                            <div class="col-lg-12 table-responsive">#}
+{#                                <form class="form-inline wrap_search">#}
+{#                                    <div class="row  m-t p-w-m">#}
+{#                                        <div class="form-group">#}
+{#                                            <select name="status" class="form-control inline">#}
+{#                                                <option value="-1">请选择状态</option>#}
+{#                                                {% for tmp_key in status_mapping %}#}
+{#                                                <option value="{{ tmp_key }}" {% if tmp_key == search_con['status']  %} selected {% endif %}>{{  status_mapping[ tmp_key ] }}</option>#}
+{#                                                {% endfor %}#}
+{#                                            </select>#}
+{#                                        </div>#}
+{#                                        <div class="form-group">#}
+{#                                            <select name="cat_id" class="form-control inline">#}
+{#                                                <option value="0">请选择分类</option>#}
+{#                                                {% for tmp_key in cat_mapping %}#}
+{#                                                    <option value="{{ tmp_key }}" {% if tmp_key|string == search_con['cat_id']  %} selected {% endif %} >{{ cat_mapping[ tmp_key].name  }}</option>#}
+{#                                                {% endfor %}#}
+{#                                            </select>#}
+{#                                        </div>#}
+{#                                        <div class="form-group">#}
+{#                                                            <div class="input-group ">#}
+{#                                                                <input type="text" name="mix_kw" placeholder="请输入关键字" class="form-control" value="{{ search_con['mix_kw'] }}">#}
+{#                                                                <input type="hidden" name="p" value="{{ search_con['p'] }}">#}
+{#                                                                <span class="input-group-btn">#}
+{#                                                                  <button class="btn btn-info btn-flat search" type="button">#}
+{#                                                                     <i class="fa fa-search"></i> 搜索#}
+{#                                                                  </button>#}
+{#                                                                </span>#}
+{#                                                              </div>#}
+{##}
+{#                                        </div>#}
+{#                                        <div class="col-lg-12">#}
+{#                                            <a class="btn  btn-warning pull-right" href="{{ buildUrl('set') }}">#}
+{#                                                <i class="fa fa-plus"></i>车辆管理#}
+{#                                            </a>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{##}
+{#                                    <hr>#}
+{##}
+{#                                </form>#}
+{#                                <table class="table  table-hover table-striped ">#}
+{#                                    <thead>#}
+{#                                    <tr class="success">#}
+{#                                        <th>标题</th>#}
+{#                                        <th>车型</th>#}
+{#                                        <th>价格</th>#}
+{#                                        <th>库存</th>#}
+{#                                        <th>标签</th>#}
+{#                                        <th>操作</th>#}
+{#                                    </tr>#}
+{#                                    </thead>#}
+{#                                    <tbody>#}
+{#                                     {% if list %}#}
+{#                                        {% for item in list %}#}
+{#                                    <tr>#}
+{#                                        <td>{{ item.name }}</td>#}
+{#                                        <td>{{ cat_mapping[ item.cat_id].name  }}</td>#}
+{#                                        <td>{{ item.price }}</td>#}
+{#                                        <td>{{ item.stock }}</td>#}
+{#                                        <td>{{ item.tags }}</td>#}
+{#                                        <td>#}
+{#                                            <a class="btn   btn-info btn-sm" href="{{ buildUrl(' info') }}?id={{ item.id  }}">#}
+{#                                                <i class="fa   fa-info-circle"></i>#}
+{#                                            </a>#}
+{#                                             {%  if item.status == 1 %}#}
+{#                                            <a class="btn   btn-warning btn-sm  " href="{{ buildUrl('set') }}?id={{ item.id  }}">#}
+{#                                                <i class="fa fa-pencil"></i>#}
+{#                                            </a>#}
+{##}
+{#                                            <a class="btn btn-danger  btn-sm remove" href="javascript:void(0);" data="{{ item.id  }}">#}
+{#                                                <i class="fa fa-times "></i>#}
+{#                                            </a>#}
+{#                                            {% else %}#}
+{#                                               <a class="m-l recover" href="javascript:void(0);" data="{{ item.id  }}">#}
+{#                                                <i class="fa fa-rotate-left  "></i>#}
+{#                                            </a>#}
+{#                                            {% endif %}#}
+{#                                        </td>#}
+{#                                    </tr>#}
+{#                                     {% endfor %}#}
+{#                                    {% else %}#}
+{#                                        <tr><td colspan="6">暂无数据~~</td></tr>#}
+{#                                    {% endif %}#}
+{#                                    </tbody>#}
+{#                                </table>#}
+{#                                <hr>#}
+{#                                <!--分页代码已被封装到统一模板文件中-->#}
+{#                                {% include 'admin/main/pages.html' %}#}
+{#                            </div>#}
+{#                        </div>#}
+{#            </div>#}
+{#    </section>#}
+{% endblock %}

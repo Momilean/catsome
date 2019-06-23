@@ -1,0 +1,31 @@
+{% extends "admin/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block content %}
+    <div></div>
+    {#    {% if current_user.is_authenticated %}{{ current_user.email }}{% else %}Stranger{% endif %}!</h1>#}
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-6 col-lg-offset-3">
+                <div class="page-header">
+                    <h1>Login</h1>
+                </div>
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        <ul  style="color: red" >
+                            {% for message in messages %}
+                                {{ message }}
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% endwith %}
+
+                <div class="input-group" display：block;margin：0 auto;>
+
+                    {{ wtf.quick_form(form) }}
+                </div>
+
+            </div><!-- /.col-lg-6 -->
+        </div>
+{% endblock %}

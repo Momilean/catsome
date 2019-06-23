@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin/font-awesome/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin/ionicons/css/ionicons.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin/dist/css/AdminLTE.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin/dist/css/Aglob.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin/dist/css/skins/skin-red.min.css') }}">
+
+    <!-- jQuery 2.1.4 -->
+    <script src="{{ url_for('static', filename='admin/js/jquery.js') }}"></script>
+    <!-- Bootstrap 3.3.5 -->
+    <script src="{{ url_for('static', filename='admin/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='car/js/common.js') }}"></script>
+</head>
+
+
+<body class="hold-transition skin-red sidebar-mini   ">
+<div class="wrapper">
+    <!-- Main Header -->
+    {% block top %}
+{#        <header class="main-header">#}
+{#            <nav class="navbar navbar-static-top">#}
+{#                <div class="container">#}
+{##}
+{#                    <div class="collapse navbar-collapse pull-left" id="navbar-collapse">#}
+{#                        <ul class="nav navbar-nav">#}
+{#                            <li class="active"><a href="">后台<span#}
+{#                                    class="sr-only">(current)</span></a></li>#}
+                            {#                            <volist name="__MENU__.main" id="menu">#}
+                            {#                                <li class="{$menu.class|default=''}"><a href="{$menu.url|U}">{$menu.title}</a></li>#}
+                            {#                            </volist>#}
+{#                            <li class="dropdown">#}
+{#                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Other <span#}
+{#                                        class="caret"></span></a>#}
+{#                                <ul class="dropdown-menu" role="menu">#}
+{#                                    <li><a href="#">微信平台</a></li>#}
+{#                                    <li><a href="#">网站建设</a></li>#}
+{#                                    <li><a href="#">素材分享</a></li>#}
+{#                                    <li class="divider"></li>#}
+{#                                    <li><a href="#">其他</a></li>#}
+{#                                </ul>#}
+{#                            </li>#}
+{#                        </ul>#}
+{#                        <form class="navbar-form navbar-left" role="search">#}
+{#                            <div class="form-group">#}
+{#                                <input type="text" class="form-control" id="navbar-search-input" placeholder="Search">#}
+{#                            </div>#}
+{#                        </form>#}
+{#                    </div>#}
+{#                    <!-- /.navbar-collapse -->#}
+{#                    <!-- 快捷菜单 -->#}
+{#                    <div class="navbar-custom-menu">#}
+{#                        <ul class="nav navbar-nav">#}
+{#                            <!-- Messages: style can be found in dropdown.less-->#}
+{#                            <li class="dropdown messages-menu">#}
+{#                                <!-- Menu toggle button -->#}
+{#                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">#}
+{#                                    <i class="fa fa-envelope-o"></i>#}
+{#                                    <span class="label label-success">4</span>#}
+{#                                </a>#}
+{#                                <ul class="dropdown-menu">#}
+{#                                    <li class="header">You have 4 messages</li>#}
+{#                                    <li>#}
+{#                                        <!-- inner menu: contains the messages -->#}
+{#                                        <div class="slimScrollDiv"#}
+{#                                             style="position: relative; overflow: hidden; width: auto; height: 200px;">#}
+{#                                            <ul class="menu" style="overflow: hidden; width: 100%; height: 200px;">#}
+{#                                                <!-- start message -->#}
+{#                                                <li>#}
+{#                                                    <a href="#">#}
+{#                                                        <div class="pull-left">#}
+{#                                                            <!-- User Image -->#}
+{#                                                            <img src="{{ url_for('static', filename='/admin/dist/img/user2-160x160.jpg') }}"#}
+{#                                                                 class="img-circle" alt="User Image">#}
+{#                                                        </div>#}
+{#                                                        <!-- Message title and timestamp -->#}
+{#                                                        <h4>#}
+{#                                                            Support Team#}
+{#                                                            <small><i class="fa fa-clock-o"></i> 5 mins</small>#}
+{#                                                        </h4>#}
+{#                                                        <!-- The message -->#}
+{#                                                        <p>Why not buy a new awesome theme?</p>#}
+{#                                                    </a>#}
+{#                                                </li>#}
+{#                                                <!-- end message -->#}
+{#                                            </ul>#}
+{#                                            <div class="slimScrollBar"#}
+{#                                                 style="width: 3px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 7px; z-index: 99; right: 1px; background: rgb(0, 0, 0);"></div>#}
+{#                                            <div class="slimScrollRail"#}
+{#                                                 style="width: 3px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; opacity: 0.2; z-index: 90; right: 1px; background: rgb(51, 51, 51);"></div>#}
+{#                                        </div>#}
+{#                                        <!-- /.menu -->#}
+{#                                    </li>#}
+{#                                    <li class="footer"><a href="#">See All Messages</a></li>#}
+{#                                </ul>#}
+{#                            </li>#}
+{#                            <!-- User Account Menu -->#}
+{#                            <li class="dropdown user user-menu">#}
+{#                                <!-- Menu Toggle Button -->#}
+{#                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">#}
+{#                                    <!-- The user image in the navbar-->#}
+{#                                    <span class="hidden-xs" style="text-align: left">#}
+{#                  {% if current_user.is_authenticated %}{{ current_user.nickname }}{% else %}Stranger{% endif %}#}
+{#                        </span>#}
+{#                                    <!-- hidden-xs hides the username on small devices so only the image appears. -->#}
+{##}
+{#                                </a>#}
+{##}
+{#                                <ul class="dropdown-menu">#}
+{#                                    <li class="user-body " style="border: 0px solid #dddddd!important; color:#fff;">#}
+{#                                        <div class="col-xs-5 text-center  globt">#}
+{#                                            <i class="fa fa-refresh"> <a href="javascript:;" onclick="clear_cache();">清楚缓存</a></i>#}
+{#                                        </div>#}
+{#                                        <div class="col-xs-5 globt  ">#}
+{#                                            <i class="fa fa-key"><a href="javascript:;"#}
+{#                                                                    onclick="edit_pwd();">修改密码</a></i>#}
+{#                                        </div>#}
+{#                                        <div class="col-xs-2 text-center">#}
+{##}
+{#                                        </div>#}
+{#                                    </li>#}
+{##}
+{#                                    <!-- Menu Footer-->#}
+{#                                    <li class="user-footer">#}
+{#                                        <div class="pull-left">#}
+{#                                            <a href="#" class="btn btn-info btn-flat">锁定</a>#}
+{#                                        </div>#}
+{#                                        <div class="pull-right">#}
+{#                                            <a href="{{ url_for('admin.logout') }}"#}
+{#                                               class="btn btn-warning btn-flat">注销</a>#}
+{#                                        </div>#}
+{#                                    </li>#}
+{#                                </ul>#}
+{#                            </li>#}
+{#                            <li><a></a></li>#}
+{#                        </ul>#}
+{#                    </div>#}
+{#                    <!-- /.navbar-custom-menu -->#}
+{#                </div>#}
+{#                <!-- /.container-fluid -->#}
+{#            </nav>#}
+{#        </header>#}
+
+        <header class="main-header">
+        <!-- Logo -->
+        <a href="{{ url_for('admin/main.index') }}" class="logo">
+          <!-- logo for regular state and mobile devices -->
+          <span class="logo-lg"><b>Flask</b>管理系统</span>
+        </a>
+        <!-- Header Navbar: style can be found in header.less -->
+        <nav class="navbar navbar-static-top" role="navigation">
+          <!-- Sidebar toggle button-->
+          <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+              <!-- Messages: style can be found in dropdown.less-->
+              <li class="dropdown messages-menu">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <i class="fa fa-envelope-o"></i>
+                  <span class="label label-success">4</span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li class="header">You have 4 messages</li>
+                  <li>
+                    <!-- inner menu: contains the actual data -->
+                    <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 200px;"><ul class="menu" style="overflow: hidden; width: 100%; height: 200px;">
+                      <li><!-- start message -->
+                        <a href="#">
+                          <div class="pull-left">
+                          </div>
+                          <h4>
+                            Support Team
+                            <small><i class="fa fa-clock-o"></i> 5 mins</small>
+                          </h4>
+                          <p>Why not buy a new awesome theme?</p>
+                        </a>
+                      </li><!-- end message -->
+                    </ul><div class="slimScrollBar" style="background: rgb(0, 0, 0); width: 3px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 7px; z-index: 99; right: 1px;"></div><div class="slimScrollRail" style="width: 3px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div></div>
+                  </li>
+                  <li class="footer"><a href="#">See All Messages</a></li>
+                </ul>
+              </li>
+              <!-- Notifications: style can be found in dropdown.less -->
+              <!-- Tasks: style can be found in dropdown.less -->
+              <!-- User Account: style can be found in dropdown.less -->
+              <li class="dropdown user user-menu">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <span class="hidden-xs">
+                      {% if current_user.is_authenticated %}{{ current_user.nickname }}{% else %}Stranger{% endif %}
+                  </span>
+                </a>
+                <ul class="dropdown-menu">
+                     <li class="user-body " style="border: 0px solid #dddddd!important; color:#fff;">
+                      <div class="col-xs-5 text-center  globt">
+                        <i class="fa fa-refresh">  <a href="javascript:;" onclick="clear_cache();">清楚缓存</a></i>
+                      </div>
+                      <div class="col-xs-5 globt  ">
+                        <i class="fa fa-key"><a href="javascript:;" onclick="edit_pwd();">修改密码</a></i>
+                      </div>
+                      <div class="col-xs-2 text-center">
+
+                      </div>
+                    </li>
+                  <!-- Menu Body -->
+
+                  <!-- Menu Footer-->
+                    <li class="user-footer">
+                      <div class="pull-left">
+                        <a href="#" class="btn btn-info btn-flat">锁定</a>
+                      </div>
+                      <div class="pull-right">
+                        <a href="{:U('Mom/logout')}" class="btn btn-warning btn-flat">注销</a>
+                      </div>
+                    </li>
+                </ul>
+              </li>
+              <li>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+    {% endblock %}
+    <!-- Left side column. contains the logo and sidebar -->
+    {% block left %}
+        <aside class="main-sidebar">
+            <section class="sidebar">
+                <div class="user-panel">
+                    <div class="pull-left image">
+                        <img src="{{ avatars.default() }}">
+                        {#                        <img src="{{ url_for('admin/main.get_avater', filename=current_user.nickname.avatar) }}" class="img-circle" alt="photo">#}
+                    </div>
+                    <div class="pull-left info">
+                        <p>{% if current_user.is_authenticated %}{{ current_user.nickname }}{% else %}
+                            Stranger{% endif %}</p>
+                        <!-- Status -->
+                        <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                    </div>
+                </div>
+                <!-- search form (Optional) -->
+
+                <!-- /.search form -->
+                <!-- Sidebar Menu -->
+                <ul class="sidebar-menu">
+                    <li class="header"></li>
+                    <!-- 左侧动态菜单！ -->
+                    <li>
+                        <a href="pages/widgets.html">
+                            <i class="fa fa-pie-chart"></i> <span>仪表盘</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pages/widgets.html">
+                            <i class="fa fa-laptop"></i> <span>系统管理</span>
+                        </a>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-edit"></i>
+                            <span>车辆模块</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu" style="display: none;">
+                            <li><a href="{{ url_for('car.cat') }}"><i class="fa fa-angle-right"></i>会员列表</a></li>
+                            <li><a href="{{ url_for('car.cat') }}"><i class="fa fa-angle-right"></i>车辆分类</a></li>
+                            <li><a href="{{ url_for('car.index') }}"><i class="fa fa-angle-right"></i>车辆管理</a></li>
+                            <li><a href="pages/UI/sliders.html"><i class="fa fa-angle-right"></i>发布申请</a></li>
+                            <li><a href="pages/UI/timeline.html"><i class="fa fa-angle-right"></i> 广告管理</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+
+                <!-- /.sidebar-menu -->
+            </section>
+            <!-- /.sidebar -->
+        </aside>
+    {% endblock %}
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Main content -->
+        <!-- Your Page Content Here -->
+        {% block content %}
+        {% endblock %}
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    <!-- Main Footer -->
+    <footer class="main-footer">
+        <!-- To the right -->
+        <div class="pull-right hidden-xs">
+            Mo
+        </div>
+        <!-- Default to the left -->
+        <strong>Copyright &copy; 2018 <a href="#">Company</a>.</strong> All rights reserved.
+    </footer>
+
+
+    <!-- Add the sidebar's background. This div must be placed
+           immediately after the control sidebar -->
+{#    <div class="control-sidebar-bg"></div>#}
+</div>
+
+<!-- //清除缓存 -->
+{#<script>#}
+{#    function clear_cache() {#}
+{#        layer.open({#}
+{##}
+{#            type: 2,#}
+{#            closeBtn: 1,#}
+{#            area: ['460px', '200px'],#}
+{#            title: '清除缓存',#}
+{#            skin: 'yourclass',#}
+{#            shade: 0.6,#}
+{#            content: '{:U('pulp / clear_cache#}
+{#        ')}'#}
+{#    })#}
+{#        ;#}
+{#    }#}
+{##}
+{#    function edit_pwd() {#}
+{#        layer.open({#}
+{#            type: 2,#}
+{#            closeBtn: 1,#}
+{#            area: ['460px', '220px'],#}
+{#            skin: 'yourclass',#}
+{#            title: '修改密码',#}
+{#            shade: 0.6,#}
+{#            content: '{:U('pulp / edit_pwd#}
+{#        ')}'#}
+{#    })#}
+{#        ;#}
+{#    }#}
+{#</script>#}
+
+<!-- REQUIRED JS SCRIPTS -->
+
+<!-- AdminLTE App -->
+<script src="{{ url_for('static', filename='admin/dist/js/app.min.js') }}"></script>
+<script src="{{ url_for('static', filename='admin/layer/layer.js') }}"></script>
+
+</body>
+
+</html>

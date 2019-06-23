@@ -1,0 +1,39 @@
+{% extends "admin/main/base.html" %}
+{% block content %}
+    <section class="content" style="background-color: whitesmoke">
+            <div class="box box-primary">
+                <div class="box-header">
+                    <i class="fa  fa-tags"></i>
+                  <h3 class="box-title">商品信息</h3>
+                </div>
+                <div class="box-body pad table-responsive">
+                    <div class="col-lg-12">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="m-b-md">
+                                    <a class="btn btn-outline btn-primary pull-right" href="{{ buildUrl('/car/set') }}?id={{ info.id }}">
+                                        <i class="fa fa-pencil"></i>编辑
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <p class="m-t">美食名：{{ info.name }}</p>
+                                <p>售价：{{ info.price }}</p>
+                                <p>库存总量：{{ info.stock }}</p>
+                                <p>图书标签：{{ info.tags }}</p>
+                {#                <p>封面图：<img src="{{ buildImageUrl( info.main_image ) }}" style="width: 50px;height: 50px;">#}
+                {##}
+                {#                </p>#}
+                                <p>描述：</p>
+                                <p>{{ info.summary | safe }}</p>
+                                <p></p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+    </section>
+{% endblock %}
